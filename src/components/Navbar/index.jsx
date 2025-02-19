@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import { FaHome, FaUserCircle, FaInfo } from "react-icons/fa";
 import { GiArchiveRegister } from "react-icons/gi";
 import { useState } from "react";
-import Modal from "../shared/_Modal/Modal";
+import Modal from "../shared/Modal";
 
 
 const Navbar = ({ registerModal, setRegisterModal }) => {

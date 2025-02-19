@@ -1,7 +1,7 @@
-import Navbar from '../../components/_Navbar/Navbar'
-import Header from './components/_Header/Header'
+import Navbar from '../../components/Navbar'
+import Header from './components/Header'
 
-import Container from '../../components/shared/_Container/Container'
+import Container from '../../components/shared/Container'
 import { useState } from 'react'
 
 
