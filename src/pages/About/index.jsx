@@ -52,8 +52,8 @@ const About = () => {
 
                     <ul className='grid grid-cols-2 gap-10'>
                         {data.map((d, index) => <li key={`$aboutme.{index}.${d.title}`} className='flex flex-col h-full '>
-                            <div className='p-3 bg-[#111] '>{d.title}</div>
-                            <p className='p-5 bg-[#202020] h-full '>{d.content}</p>
+                            <div className='p-3 bg-[#111] text-zinc-200'>{d.title}</div>
+                            <p className='p-5 bg-[#202020] h-full text-zinc-300 '>{d.content}</p>
                         </li>)}
                     </ul>
                 </div>
