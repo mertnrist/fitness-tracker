@@ -1,12 +1,24 @@
 import { Link } from "react-router-dom"
 import { FaHome, FaUserCircle, FaInfo } from "react-icons/fa";
 import { GiArchiveRegister } from "react-icons/gi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "../shared/Modal";
 
 
-const Navbar = ({ registerModal, setRegisterModal }) => {
+const Navbar = ({ registerModal, setRegisterModal, active }) => {
     const [loginModal, setLoginModal] = useState(false)
+    const [activeBtn, setActiveBtn] = useState('home')
+
+    useEffect(() => {
+        switch (window.location.pathname) {
+            case "/":
+                setActiveBtn('home')
+                break;
+            case "/hakkimizda":
+                setActiveBtn('about')
+                break;
+        }
+    }, [])
 
     return (
         <>
@@ -23,14 +35,14 @@ const Navbar = ({ registerModal, setRegisterModal }) => {
 
                 {/* Pages */}
                 <ul className="bg-[#111] p-[15px] w-full rounded-[10px] flex gap-5 items-center text-[18px]">
-                    <li className="p-2 rounded-2xl bg-white text-black">
+                    <li className={activeBtn === 'home' ? "p-2 rounded-2xl bg-white text-black" : ""}>
                         <Link to={'/'} className="flex items-center gap-1">
                             <FaHome />
                             <span>Anasayfa</span>
                         </Link>
                     </li>
-                    <li>
-                        <Link to={'/'} className="flex items-center gap-1">
+                    <li className={activeBtn === 'about' ? "p-2 rounded-2xl bg-white text-black" : ""}>
+                        <Link to={'/hakkimizda'} className="flex items-center gap-1">
                             <FaInfo />
                             <span>Hakkımızda</span>
                         </Link>
@@ -49,7 +61,7 @@ const Navbar = ({ registerModal, setRegisterModal }) => {
                     </li>
                 </ul>
 
-            </nav>
+            </nav >
         </>
     )
 }

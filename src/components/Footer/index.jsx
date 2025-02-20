@@ -12,7 +12,7 @@ const Footer = () => {
                 <div className='flex flex-col gap-5'>
                     <div className='text-[18px] font-bold'>Sayfalar</div>
                     <Link className='text-[12px] inline-flex gap-1 items-center before:p-1 before:w-[10px] before:h-[10px] before:bg-white'>Anasayfa</Link>
-                    <Link className='text-[12px] inline-flex gap-1 items-center before:p-1 before:w-[10px] before:h-[10px] before:bg-white'>Hakkımda</Link>
+                    <Link className='text-[12px] inline-flex gap-1 items-center before:p-1 before:w-[10px] before:h-[10px] before:bg-white'>Hakkımizda</Link>
                 </div>
                 <div className='flex flex-col gap-5'>
                     <div className='text-[18px] font-bold'>Sosyal Medya</div>
