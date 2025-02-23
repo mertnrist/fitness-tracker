@@ -1,3 +1,5 @@
+import { useModalStore } from '../../../../store/modalStore'
+
 const Header = () => {
     const setRegisterModal = useModalStore((state) => state.changeRegisterModal)
     return (
