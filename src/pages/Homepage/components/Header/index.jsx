@@ -1,4 +1,5 @@
-const Header = ({ setRegisterModal }) => {
+const Header = () => {
+    const setRegisterModal = useModalStore((state) => state.changeRegisterModal)
     return (
         <div className='flex justify-between items-center  '>
             <div className="flex flex-col gap-5 w-100 pt-20 pb-20">
