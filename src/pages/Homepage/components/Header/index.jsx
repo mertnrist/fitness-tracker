@@ -1,3 +1,4 @@
+import Button from '../../../../components/shared/Button'
 import { useModalStore } from '../../../../store/modalStore'
 
 const Header = () => {
@@ -5,9 +6,9 @@ const Header = () => {
     return (
         <div className='flex justify-between items-center  '>
             <div className="flex flex-col gap-5 w-100 pt-20 pb-20">
-                <div className="text-4xl font-bold">Spor yolculuğunuza ortak olalım</div>
-                <p className="text-[12px]">Gelişimini eski usul not defterleriyle mi takip etmeye devam edeceksin, yoksa modern dünyanın sunduğu imkanlardan yararlanarak tamamen ücretsiz bir şekilde bu hizmetten faydalanmak mı istersin? Geçmişin alışkanlıklarına bağlı kalmak mı, yoksa geleceğe bir adım atmak mı? Seçim senin!</p>
-                <button className="w-60 bg-white text-black border-b-12 cursor-pointer border-b-gray-500 p-5 text-2xl font-bold" onClick={(e) => setRegisterModal(true)}>Hemen Kayıt Ol</button>
+                <div className="text-6xl font-bold">Spor yolculuğunuza ortak olalım</div>
+                <p className="text-[14px]">Gelişimini eski usul not defterleriyle mi takip etmeye devam edeceksin, yoksa modern dünyanın sunduğu imkanlardan yararlanarak tamamen ücretsiz bir şekilde bu hizmetten faydalanmak mı istersin? Geçmişin alışkanlıklarına bağlı kalmak mı, yoksa geleceğe bir adım atmak mı? Seçim senin!</p>
+                <Button onClick={(e) => setRegisterModal(true)}>Hemen Kayıt Ol</Button>
             </div>
             <div className='w-100'>
                 <svg

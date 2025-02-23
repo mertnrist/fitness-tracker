@@ -2,8 +2,11 @@ import { Link } from "react-router-dom"
 import { FaHome, FaUserCircle, FaInfo } from "react-icons/fa";
 import { GiArchiveRegister } from "react-icons/gi";
 import { useEffect, useState } from "react";
-import Modal from "../shared/Modal";
 import { useModalStore } from "../../store/modalStore";
+
+import Modal from "../shared/Modal";
+import Register from "../shared/Modal/Register";
+import Login from "../shared/Modal/Login";
 
 
 const Navbar = () => {
@@ -29,12 +32,12 @@ const Navbar = () => {
     return (
         <>
             {registerModal && <Modal isOpen={registerModal} setIsOpen={setRegisterModal} title="Kayıt Ol">
-
+                <Register />
             </Modal>}
 
 
             {loginModal && <Modal isOpen={loginModal} setIsOpen={setLoginModal} title="Giriş Yap">
-
+                <Login />
             </Modal>}
 
             <nav className='w-full h-[100px] flex items-center justify-center p-5'>

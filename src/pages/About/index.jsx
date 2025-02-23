@@ -1,6 +1,7 @@
 import Footer from '../../components/Footer'
 import Navbar from '../../components/Navbar'
 import Container from '../../components/shared/Container'
+import Button from '../../components/shared/Button'
 
 const About = () => {
     const data = [
@@ -58,8 +59,11 @@ const About = () => {
                     </ul>
                 </div>
 
-                <button className='mt-5 mr-5 p-5 cursor-pointer w-50 text-center text-2xl font-bold bg-white text-black border-b-10 border-b-gray-500 '>İletişim</button>
-                <button className='mt-5 mr-5 p-5 cursor-pointer w-50 text-center text-2xl font-bold bg-white text-black border-b-10 border-b-gray-500'>Instagram</button>
+                <div className='flex gap-5 text-center mt-5'>
+                    <Button>İletişim</Button>
+                    <Button>Instagram</Button>
+                </div>
+
 
             </Container>
             <Footer />
