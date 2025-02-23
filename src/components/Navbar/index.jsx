@@ -3,11 +3,17 @@ import { FaHome, FaUserCircle, FaInfo } from "react-icons/fa";
 import { GiArchiveRegister } from "react-icons/gi";
 import { useEffect, useState } from "react";
 import Modal from "../shared/Modal";
+import { useModalStore } from "../../store/modalStore";
 
 
-const Navbar = ({ registerModal, setRegisterModal, active }) => {
-    const [loginModal, setLoginModal] = useState(false)
-    const [activeBtn, setActiveBtn] = useState('home')
+const Navbar = () => {
+    const [activeBtn, setActiveBtn] = useState('')
+
+    const registerModal = useModalStore((state) => state.registerModal) || false
+    const setRegisterModal = useModalStore((state) => state.changeRegisterModal)
+
+    const loginModal = useModalStore((state) => state.loginModal) || false
+    const setLoginModal = useModalStore((state) => state.changeLoginModal)
 
     useEffect(() => {
         switch (window.location.pathname) {
@@ -54,7 +60,7 @@ const Navbar = ({ registerModal, setRegisterModal, active }) => {
                         </Link>
                     </li>
                     <li>
-                        <Link to={'/'} className="flex items-center gap-1" onClick={(e) => setRegisterModal(true)}>
+                        <Link className="flex items-center gap-1" onClick={(e) => setRegisterModal(true)}>
                             <GiArchiveRegister />
                             <span>Kayıt Ol</span>
                         </Link>
