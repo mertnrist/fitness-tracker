@@ -3,6 +3,7 @@ import { FaHome, FaUserCircle, FaInfo } from "react-icons/fa";
 import { GiArchiveRegister } from "react-icons/gi";
 import { useEffect, useState } from "react";
 import { useModalStore } from "../../store/modalStore";
+import { CgProfile } from "react-icons/cg";
 
 import Modal from "../shared/Modal";
 import Register from "../shared/Modal/Register";
@@ -25,6 +26,9 @@ const Navbar = () => {
                 break;
             case "/hakkimizda":
                 setActiveBtn('about')
+                break;
+            case "/profil":
+                setActiveBtn('profile')
                 break;
         }
     }, [])
@@ -68,7 +72,15 @@ const Navbar = () => {
                             <span>Kayıt Ol</span>
                         </Link>
                     </li>
+                    <li className={activeBtn === 'profile' ? "p-2 rounded-2xl bg-white text-black" : ""}>
+                        <Link to={'/profil'} className="flex items-center gap-1">
+                            <CgProfile />
+                            <span>Profilim</span>
+                        </Link>
+                    </li>
                 </ul>
+
+
 
             </nav >
         </>
