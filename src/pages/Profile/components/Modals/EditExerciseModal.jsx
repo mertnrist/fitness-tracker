@@ -22,11 +22,11 @@ const EditExerciseModal = ({
             title={`${selectedExercise?.name} - Yeni Kayıt`}
             size="fullscreen"
         >
-            <div className="h-full overflow-y-auto overflow-x-hidden px-4">
+            <div className="h-full px-4 overflow-hidden">
                 <div className="min-h-full flex flex-col py-4 max-w-full">
                     <form onSubmit={handleEditSubmit} className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-6 w-full">
                         <div className="space-y-6 min-w-0">
-                            <h3 className="text-xl font-semibold text-amber-400 sticky top-0 bg-[#1a1a1a] py-2 z-10">Bugünkü Antrenman</h3>
+                            <h3 className="text-xl font-semibold text-amber-400 top-0 py-2 z-10">Bugünkü Antrenman</h3>
                             <div className="space-y-6">
                                 <div className="flex flex-col gap-3">
                                     <label className="text-zinc-400 text-lg">Ağırlık (kg)</label>
@@ -61,7 +61,7 @@ const EditExerciseModal = ({
                         </div>
 
                         <div className="space-y-6 min-w-0">
-                            <h3 className="text-xl font-semibold text-amber-400 sticky top-0 bg-[#1a1a1a] py-2 z-10">Sonraki Antrenman Hedefi</h3>
+                            <h3 className="text-xl font-semibold text-amber-400 top-0 py-2 z-10">Sonraki Antrenman Hedefi</h3>
                             <div className="space-y-6">
                                 <div className="flex flex-col gap-3">
                                     <label className="text-zinc-400 text-lg">Hedef Ağırlık (kg)</label>

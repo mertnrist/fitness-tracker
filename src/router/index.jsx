@@ -6,6 +6,10 @@ import Profile from "../pages/Profile";
 import Daily from '../pages/Profile/pages/Daily';
 import Programs from '../pages/Profile/pages/Programs';
 import Settings from '../pages/Profile/pages/Settings';
+import Measurements from "../pages/Profile/pages/Measurements";
+import Social from "../pages/Profile/pages/Social";
+import UserProfile from "../pages/Profile/pages/UserProfile";
+import MyProfile from "../pages/Profile/pages/MyProfile";
 
 const router = createBrowserRouter([
     {
@@ -31,6 +35,22 @@ const router = createBrowserRouter([
     {
         path: '/profil/ayarlarim',
         element: <Settings />
+    },
+    {
+        path: '/profil/olcumler',
+        element: <Measurements />
+    },
+    {
+        path: '/profil/arkadaslar',
+        element: <Social />
+    },
+    {
+        path: '/profil/:username',
+        element: <UserProfile />
+    },
+    {
+        path: '/profil/ben',
+        element: <MyProfile />
     },
 ])
 

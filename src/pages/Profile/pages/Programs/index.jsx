@@ -1,17 +1,16 @@
-import { useState } from 'react';
 import Navbar from '../../../../components/Navbar'
 import Container from '../../../../components/shared/Container'
 import ProfileNavigation from '../../components/ProfileNavigation'
-import { IoAdd, IoBarbell, IoCalendarOutline, IoTimeOutline } from 'react-icons/io5'
 import EditProgramModal from './components/EditProgramModal';
-import AddExerciseModal from './components/AddExerciseModal';
+import CreateProgramModal from './components/CreateProgramModal';
+import { useState } from 'react';
+import { IoAdd, IoBarbell, IoCalendarOutline, IoTimeOutline } from 'react-icons/io5'
 
 const Programs = () => {
     const [selectedProgram, setSelectedProgram] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
-
-    // Örnek program verileri
-    const programs = [
+    const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+    const [programs, setPrograms] = useState([
         {
             id: 1,
             name: "Push Pull Legs",
@@ -30,11 +29,22 @@ const Programs = () => {
             startDate: "15.02.2025",
             status: "draft"
         }
-    ]
+    ]);
 
     const handleProgramClick = (program) => {
         setSelectedProgram(program);
         setIsModalOpen(true);
+    };
+
+    const handleCreateProgram = (newProgram) => {
+        const program = {
+            ...newProgram,
+            id: Date.now(),
+            workoutCount: 0,
+            startDate: new Date().toLocaleDateString('tr-TR'),
+            status: 'draft'
+        };
+        setPrograms([...programs, program]);
     };
 
     return (
@@ -45,7 +55,10 @@ const Programs = () => {
                 <div className="space-y-6">
                     <div className="flex items-center justify-between">
                         <h2 className="text-xl text-white">Antrenman Programlarım</h2>
-                        <button className="flex items-center gap-2 px-4 py-2 bg-amber-500 hover:bg-amber-600 text-black rounded-lg transition-colors text-sm font-medium">
+                        <button
+                            onClick={() => setIsCreateModalOpen(true)}
+                            className="flex items-center gap-2 px-4 py-2 bg-amber-500 hover:bg-amber-600 text-black rounded-lg transition-colors text-sm font-medium"
+                        >
                             <IoAdd className="text-lg" />
                             Yeni Program
                         </button>
@@ -97,6 +110,12 @@ const Programs = () => {
                             <p className="text-zinc-400">Henüz bir antrenman programı oluşturmadınız.</p>
                         </div>
                     )}
+
+                    <CreateProgramModal
+                        isOpen={isCreateModalOpen}
+                        setIsOpen={setIsCreateModalOpen}
+                        onSave={handleCreateProgram}
+                    />
 
                     <EditProgramModal
                         isOpen={isModalOpen}

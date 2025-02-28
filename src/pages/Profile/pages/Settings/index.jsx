@@ -1,8 +1,8 @@
-import { useState } from 'react';
 import Navbar from '../../../../components/Navbar';
 import Container from '../../../../components/shared/Container'
 import ProfileNavigation from '../../components/ProfileNavigation'
-import { IoPersonOutline, IoNotificationsOutline, IoLockClosedOutline, IoTrashOutline } from 'react-icons/io5';
+import { useState } from 'react';
+import { IoPersonOutline, IoNotificationsOutline, IoLockClosedOutline, IoTrashOutline, IoSave, IoClose } from 'react-icons/io5';
 
 const Settings = () => {
     const [user, setUser] = useState({
@@ -20,6 +20,10 @@ const Settings = () => {
         progress: false,
         news: false
     });
+
+    const [bio, setBio] = useState('Fitness tutkunu | 3 yıllık deneyim');
+    const [isEditing, setIsEditing] = useState(false);
+    const [tempBio, setTempBio] = useState(bio);
 
     const handleUserUpdate = (e) => {
         e.preventDefault();
@@ -40,14 +44,29 @@ const Settings = () => {
         }
     };
 
+    const handleSave = async () => {
+        try {
+            // API çağrısı yapılacak
+            // await updateBio(tempBio);
+            setBio(tempBio);
+            setIsEditing(false);
+        } catch (error) {
+            console.error('Bio güncellenirken hata oluştu:', error);
+        }
+    };
+
+    const handleCancel = () => {
+        setTempBio(bio);
+        setIsEditing(false);
+    };
+
     return (
         <div>
             <Navbar />
             <Container>
                 <ProfileNavigation />
 
-                <div className="max-w-4xl mx-auto space-y-8">
-                    {/* Profil Bilgileri */}
+                <div className="mx-auto space-y-8  pb-10">
                     <div className="bg-zinc-800/50 rounded-lg p-6">
                         <div className="flex items-center gap-3 mb-6">
                             <IoPersonOutline className="text-2xl text-amber-500" />
@@ -198,8 +217,6 @@ const Settings = () => {
                             </div>
                         </form>
                     </div>
-
-                    {/* Hesap Silme */}
                     <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-6">
                         <div className="flex items-center gap-3 mb-6">
                             <IoTrashOutline className="text-2xl text-red-500" />
@@ -219,6 +236,59 @@ const Settings = () => {
                             >
                                 Hesabı Sil
                             </button>
+                        </div>
+                    </div>
+
+                    {/* Bio Düzenleme */}
+                    <div className="bg-zinc-800/50 rounded-xl p-6 border border-zinc-700/30">
+                        <div className="space-y-4">
+                            <div className="flex justify-between items-center">
+                                <h3 className="text-lg font-semibold text-white">Hakkımda</h3>
+                                {!isEditing && (
+                                    <button
+                                        onClick={() => setIsEditing(true)}
+                                        className="text-sm text-amber-500 hover:text-amber-400"
+                                    >
+                                        Düzenle
+                                    </button>
+                                )}
+                            </div>
+
+                            {isEditing ? (
+                                <div className="space-y-4">
+                                    <textarea
+                                        value={tempBio}
+                                        onChange={(e) => setTempBio(e.target.value)}
+                                        placeholder="Kendinizden bahsedin..."
+                                        maxLength={150}
+                                        className="w-full bg-zinc-900/50 border border-zinc-700 rounded-lg px-4 py-3 text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-amber-500 resize-none"
+                                        rows={4}
+                                    />
+                                    <div className="flex items-center justify-between">
+                                        <p className="text-sm text-zinc-400">
+                                            {tempBio.length}/150 karakter
+                                        </p>
+                                        <div className="flex gap-2">
+                                            <button
+                                                onClick={handleCancel}
+                                                className="flex items-center gap-2 px-4 py-2 bg-zinc-700 hover:bg-zinc-600 text-white rounded-lg text-sm"
+                                            >
+                                                <IoClose className="text-lg" />
+                                                İptal
+                                            </button>
+                                            <button
+                                                onClick={handleSave}
+                                                className="flex items-center gap-2 px-4 py-2 bg-amber-500 hover:bg-amber-600 text-black rounded-lg text-sm font-medium"
+                                            >
+                                                <IoSave className="text-lg" />
+                                                Kaydet
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            ) : (
+                                <p className="text-zinc-300">{bio}</p>
+                            )}
                         </div>
                     </div>
                 </div>

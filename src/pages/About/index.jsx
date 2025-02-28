@@ -92,12 +92,12 @@ const About = () => {
                             </p>
                         </div>
 
-                        <Button
+                        <button
                             className="flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 w-full max-w-xs mx-auto py-3"
                         >
                             <IoMailOutline className="text-xl" />
                             <span>E-posta</span>
-                        </Button>
+                        </button>
                     </div>
                 </div>
             </Container>

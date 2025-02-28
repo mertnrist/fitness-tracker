@@ -8,6 +8,7 @@ const DailyWorkoutModal = ({ isOpen, setIsOpen, workout, date }) => {
             isOpen={isOpen}
             setIsOpen={setIsOpen}
             title={`${date} - Antrenman Detayı`}
+            size="fullscreen"
         >
             <div className="p-4">
                 <div className="space-y-6">

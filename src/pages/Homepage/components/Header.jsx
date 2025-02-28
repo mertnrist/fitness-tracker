@@ -32,7 +32,7 @@ const Header = () => {
                     viewBox="0 0 100 100"
                     style={{ enableBackground: "new 0 0 100 100" }}
                     xmlSpace="preserve"
-                    className="fill-amber-500"
+                    className="fill-amber-500 drop-shadow-2xl"
                 >
                     <path d="M48.5,20.7c0,0,3.5-3.6,9.1-3.5c5.6,0.1,8.5,3.3,8.5,3.3L70.4,9l-8.8,2.3l-4-6.9l-4.4,7.1l-9-2.9L48.5,20.7z" />
                     <path d="M57.6,20.9c5.4,0,9.9,4.4,9.9,9.9c0,5.4-4.4,9.8-9.9,9.8c-5.4,0-9.8-4.4-9.8-9.8C47.8,25.3,52.2,20.9,57.6,20.9L57.6,20.9z" />

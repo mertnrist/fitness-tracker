@@ -24,6 +24,7 @@ const AddExerciseModal = ({ isOpen, setIsOpen, onAdd }) => {
             isOpen={isOpen}
             setIsOpen={setIsOpen}
             title="Yeni Hareket Ekle"
+            size="fullscreen"
         >
             <form onSubmit={handleSubmit} className="p-6 space-y-6">
                 <div className="flex items-center gap-4 text-zinc-400">

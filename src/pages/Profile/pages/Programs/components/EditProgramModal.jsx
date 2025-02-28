@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import Modal from '../../../../../components/shared/Modal';
 import { IoAdd, IoTrashOutline } from 'react-icons/io5';
+import Modal from '../../../../../components/shared/Modal';
 import AddExerciseModal from './AddExerciseModal';
 
 const EditProgramModal = ({ isOpen, setIsOpen, program }) => {
@@ -88,142 +88,138 @@ const EditProgramModal = ({ isOpen, setIsOpen, program }) => {
             <Modal
                 isOpen={isOpen}
                 setIsOpen={setIsOpen}
-                title={`${program.name} - Program Düzenleme`}
+                title={program ? "Programı Düzenle" : "Yeni Program Oluştur"}
                 size="fullscreen"
             >
-                <div className="h-[calc(100vh-80px)] flex flex-col">
-                    <div className="flex-1 overflow-y-auto px-6">
-                        <div className="max-w-6xl mx-auto py-6 space-y-8">
-                            {/* Program Detayları */}
-                            <div className="space-y-4">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div>
-                                        <label className="block text-sm text-zinc-400 mb-1">Program Adı</label>
-                                        <input
-                                            type="text"
-                                            className="w-full bg-zinc-800 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
-                                            defaultValue={program.name}
-                                        />
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm text-zinc-400 mb-1">Durum</label>
-                                        <select
-                                            className="w-full bg-zinc-800 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
-                                            defaultValue={program.status}
-                                        >
-                                            <option value="active">Aktif</option>
-                                            <option value="draft">Taslak</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div>
-                                    <label className="block text-sm text-zinc-400 mb-1">Açıklama</label>
-                                    <textarea
-                                        className="w-full bg-zinc-800 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
-                                        rows="2"
-                                        defaultValue={program.description}
-                                    />
-                                </div>
+                <div className="space-y-6 p-6">
+                    {/* Program bilgileri */}
+                    <div className="space-y-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label className="block text-sm text-zinc-400 mb-1">Program Adı</label>
+                                <input
+                                    type="text"
+                                    className="w-full bg-zinc-800 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                                    defaultValue={program.name}
+                                />
                             </div>
-
-                            {/* Antrenman Günleri */}
-                            <div className="space-y-4">
-                                <div className="flex items-center justify-between sticky top-0 bg-[#1a1a1a] py-4 z-10">
-                                    <h3 className="text-lg text-white font-medium">Antrenman Günleri</h3>
-                                    <button
-                                        onClick={handleAddDay}
-                                        className="flex items-center gap-2 px-3 py-1.5 bg-zinc-700 hover:bg-zinc-600 text-white rounded-lg transition-colors text-sm"
-                                    >
-                                        <IoAdd className="text-lg" />
-                                        Gün Ekle
-                                    </button>
-                                </div>
-
-                                <div className="space-y-4">
-                                    {workoutDays.map((workoutDay) => (
-                                        <div key={workoutDay.id} className="bg-zinc-800/50 rounded-lg p-4 space-y-4">
-                                            <div className="flex items-center justify-between">
-                                                <div className="flex items-center gap-4">
-                                                    <select
-                                                        className="bg-zinc-700 rounded-lg px-3 py-1.5 text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
-                                                        value={workoutDay.day}
-                                                        onChange={(e) => {
-                                                            setWorkoutDays(prev => prev.map(day =>
-                                                                day.id === workoutDay.id
-                                                                    ? { ...day, day: e.target.value }
-                                                                    : day
-                                                            ));
-                                                        }}
-                                                    >
-                                                        {daysOfWeek.map(d => (
-                                                            <option key={d} value={d}>{d}</option>
-                                                        ))}
-                                                    </select>
-                                                    <input
-                                                        type="text"
-                                                        placeholder="Antrenman adı"
-                                                        className="bg-zinc-700 rounded-lg px-3 py-1.5 text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
-                                                        value={workoutDay.name}
-                                                        onChange={(e) => {
-                                                            setWorkoutDays(prev => prev.map(day =>
-                                                                day.id === workoutDay.id
-                                                                    ? { ...day, name: e.target.value }
-                                                                    : day
-                                                            ));
-                                                        }}
-                                                    />
-                                                </div>
-                                                <button
-                                                    onClick={() => handleDeleteDay(workoutDay.id)}
-                                                    className="text-zinc-400 hover:text-red-500 transition-colors"
-                                                >
-                                                    <IoTrashOutline className="text-lg" />
-                                                </button>
-                                            </div>
-
-                                            {/* Hareketler */}
-                                            <div className="space-y-2">
-                                                <div className="flex items-center justify-between">
-                                                    <h4 className="text-sm text-zinc-400">Hareketler</h4>
-                                                    <button
-                                                        onClick={() => handleAddExercise(workoutDay.id)}
-                                                        className="text-xs text-amber-500 hover:text-amber-400"
-                                                    >
-                                                        + Hareket Ekle
-                                                    </button>
-                                                </div>
-                                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
-                                                    {workoutDay.exercises.map((exercise) => (
-                                                        <div
-                                                            key={exercise.id}
-                                                            className="flex items-center justify-between bg-zinc-700/50 rounded px-3 py-2 group"
-                                                        >
-                                                            <div>
-                                                                <span className="text-sm text-white">{exercise.name}</span>
-                                                                <span className="text-xs text-zinc-400 ml-2">
-                                                                    {exercise.sets}x{exercise.reps}
-                                                                </span>
-                                                            </div>
-                                                            <button
-                                                                onClick={() => handleDeleteExercise(workoutDay.id, exercise.id)}
-                                                                className="text-zinc-500 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-all"
-                                                            >
-                                                                <IoTrashOutline />
-                                                            </button>
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
+                            <div>
+                                <label className="block text-sm text-zinc-400 mb-1">Durum</label>
+                                <select
+                                    className="w-full bg-zinc-800 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                                    defaultValue={program.status}
+                                >
+                                    <option value="active">Aktif</option>
+                                    <option value="draft">Taslak</option>
+                                </select>
                             </div>
+                        </div>
+                        <div>
+                            <label className="block text-sm text-zinc-400 mb-1">Açıklama</label>
+                            <textarea
+                                className="w-full bg-zinc-800 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                                rows="2"
+                                defaultValue={program.description}
+                            />
                         </div>
                     </div>
 
-                    {/* Sabit Alt Bar */}
-                    <div className="border-t border-zinc-800 bg-[#1a1a1a] px-6 py-4">
-                        <div className="max-w-6xl mx-auto flex justify-end gap-2">
+                    {/* Antrenman günleri */}
+                    <div className="space-y-4">
+                        <div className="flex items-center justify-between top-0 py-4 z-10">
+                            <h3 className="text-lg text-white font-medium">Antrenman Günleri</h3>
+                            <button
+                                onClick={handleAddDay}
+                                className="flex items-center gap-2 px-3 py-1.5 bg-zinc-700 hover:bg-zinc-600 text-white rounded-lg transition-colors text-sm"
+                            >
+                                <IoAdd className="text-lg" />
+                                Gün Ekle
+                            </button>
+                        </div>
+
+                        <div className="space-y-4">
+                            {workoutDays.map((workoutDay) => (
+                                <div key={workoutDay.id} className="bg-zinc-800/50 rounded-lg p-4 space-y-4">
+                                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                                        <div className="flex flex-col sm:flex-row gap-2 sm:items-center w-full sm:w-auto">
+                                            <select
+                                                className="w-full sm:w-auto bg-zinc-700 rounded-lg px-3 py-1.5 text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                                                value={workoutDay.day}
+                                                onChange={(e) => {
+                                                    setWorkoutDays(prev => prev.map(day =>
+                                                        day.id === workoutDay.id
+                                                            ? { ...day, day: e.target.value }
+                                                            : day
+                                                    ));
+                                                }}
+                                            >
+                                                {daysOfWeek.map(d => (
+                                                    <option key={d} value={d}>{d}</option>
+                                                ))}
+                                            </select>
+                                            <input
+                                                type="text"
+                                                placeholder="Antrenman adı"
+                                                className="w-full sm:w-auto bg-zinc-700 rounded-lg px-3 py-1.5 text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                                                value={workoutDay.name}
+                                                onChange={(e) => {
+                                                    setWorkoutDays(prev => prev.map(day =>
+                                                        day.id === workoutDay.id
+                                                            ? { ...day, name: e.target.value }
+                                                            : day
+                                                    ));
+                                                }}
+                                            />
+                                        </div>
+                                        <button
+                                            onClick={() => handleDeleteDay(workoutDay.id)}
+                                            className="text-zinc-400 hover:text-red-500 transition-colors"
+                                        >
+                                            <IoTrashOutline className="text-lg" />
+                                        </button>
+                                    </div>
+
+                                    {/* Hareketler */}
+                                    <div className="space-y-2">
+                                        <div className="flex items-center justify-between">
+                                            <h4 className="text-sm text-zinc-400">Hareketler</h4>
+                                            <button
+                                                onClick={() => handleAddExercise(workoutDay.id)}
+                                                className="text-xs text-amber-500 hover:text-amber-400"
+                                            >
+                                                + Hareket Ekle
+                                            </button>
+                                        </div>
+                                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+                                            {workoutDay.exercises.map((exercise) => (
+                                                <div
+                                                    key={exercise.id}
+                                                    className="flex items-center justify-between bg-zinc-700/50 rounded px-3 py-2 group"
+                                                >
+                                                    <div>
+                                                        <span className="text-sm text-white">{exercise.name}</span>
+                                                        <span className="text-xs text-zinc-400 ml-2">
+                                                            {exercise.sets}x{exercise.reps}
+                                                        </span>
+                                                    </div>
+                                                    <button
+                                                        onClick={() => handleDeleteExercise(workoutDay.id, exercise.id)}
+                                                        className="text-zinc-500 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-all"
+                                                    >
+                                                        <IoTrashOutline />
+                                                    </button>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Buttons */}
+                    <div className="sticky bottom-0 pt-4 mt-8 border-t border-zinc-800 bg-zinc-900">
+                        <div className="flex justify-end gap-2">
                             <button
                                 className="px-4 py-2 bg-zinc-700 hover:bg-zinc-600 text-white rounded-lg transition-colors text-sm"
                                 onClick={() => setIsOpen(false)}
