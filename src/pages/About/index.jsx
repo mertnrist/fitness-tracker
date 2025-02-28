@@ -1,7 +1,6 @@
 import Footer from '../../components/Footer'
 import Navbar from '../../components/Navbar'
 import Container from '../../components/shared/Container'
-import Button from '../../components/shared/Button'
 import { IoMailOutline } from 'react-icons/io5'
 
 const About = () => {

@@ -10,6 +10,7 @@ import Measurements from "../pages/Profile/pages/Measurements";
 import Social from "../pages/Profile/pages/Social";
 import UserProfile from "../pages/Profile/pages/UserProfile";
 import MyProfile from "../pages/Profile/pages/MyProfile";
+import Chat from "../pages/Profile/pages/Chat";
 
 const router = createBrowserRouter([
     {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
         element: <Programs />
     },
     {
+        path: '/profil/ben',
+        element: <MyProfile />
+    },
+    {
         path: '/profil/ayarlarim',
         element: <Settings />
     },
@@ -49,9 +54,9 @@ const router = createBrowserRouter([
         element: <UserProfile />
     },
     {
-        path: '/profil/ben',
-        element: <MyProfile />
-    },
+        path: '/profil/mesajlarim',
+        element: <Chat />
+    }
 ])
 
 export default router;

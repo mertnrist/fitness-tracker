@@ -101,13 +101,6 @@ const Navbar = () => {
                 setRegisterModal(true);
                 closeMobileMenu();
             }
-        },
-        {
-            name: "Profilim",
-            icon: <CgProfile />,
-            link: "/profil",
-            active: activeBtn === 'profile',
-            onClick: closeMobileMenu
         }
     ];
 
@@ -134,6 +127,39 @@ const Navbar = () => {
                         {isMobileMenuOpen ? <IoClose /> : <IoMenu />}
                     </button>
 
+                    {/* Mobil için sağ üst köşe butonları */}
+                    <div className="lg:hidden absolute right-[-15px] top-5 -translate-y-1/2 flex items-center gap-4 z-10">
+                        <Link to={'/profil/arkadaslar'} className="text-2xl hover:text-amber-500 transition-colors">
+                            <BiSearch />
+                        </Link>
+                        <div className="relative flex" ref={notificationsRef}>
+                            <button
+                                onClick={() => setIsNotificationsOpen(!isNotificationsOpen)}
+                                className={`hover:text-amber-500 transition-colors relative ${isNotificationsOpen ? 'text-amber-500' : ''}`}
+                            >
+                                <IoNotifications className="text-2xl" />
+                                {unreadCount > 0 && (
+                                    <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">
+                                        {unreadCount}
+                                    </span>
+                                )}
+                            </button>
+                            <div className="absolute top-full right-0">
+                                <NotificationsModal
+                                    isOpen={isNotificationsOpen}
+                                    onClose={() => setIsNotificationsOpen(false)}
+                                />
+                            </div>
+                        </div>
+                        <Link
+                            to="/profil"
+                            className={`text-2xl hover:text-amber-500 transition-colors ${activeBtn === 'profile' ? 'text-amber-500' : ''}`}
+                            onClick={closeMobileMenu}
+                        >
+                            <CgProfile />
+                        </Link>
+                    </div>
+
                     <ul className="hidden lg:flex bg-zinc-800/80 backdrop-blur-sm p-[15px] w-full rounded-xl gap-5 items-center text-[18px] relative z-10">
                         {navItems.map((item, index) => (
                             <li
@@ -153,21 +179,20 @@ const Navbar = () => {
                                 )}
                             </li>
                         ))}
-                        <li className="ml-auto flex gap-1">
-                            <div className=" flex items-center text-2xl" ref={notificationsRef}>
-                                <Link to={'/profil/arkadaslar'}>
-                                    <BiSearch />
-                                </Link>
-                            </div>
-                            <div className="relative" ref={notificationsRef}>
+
+                        {/* Masaüstü için sağ taraf butonları */}
+                        <li className="ml-auto flex items-center gap-4">
+                            <Link to={'/profil/arkadaslar'} className="text-2xl hover:text-amber-500 transition-colors p-2">
+                                <BiSearch className="text-[22px]" />
+                            </Link>
+                            <div className="relative flex" ref={notificationsRef}>
                                 <button
                                     onClick={() => setIsNotificationsOpen(!isNotificationsOpen)}
-                                    className={`p-2 rounded-xl hover:text-amber-500 transition-colors relative ${isNotificationsOpen ? 'text-amber-500' : ''
-                                        }`}
+                                    className={`hover:text-amber-500 transition-colors relative ${isNotificationsOpen ? 'text-amber-500' : ''}`}
                                 >
-                                    <IoNotifications className="text-2xl" />
+                                    <IoNotifications className="text-[22px]" />
                                     {unreadCount > 0 && (
-                                        <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">
+                                        <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">
                                             {unreadCount}
                                         </span>
                                     )}
@@ -179,11 +204,16 @@ const Navbar = () => {
                                     />
                                 </div>
                             </div>
-
+                            <Link
+                                to="/profil"
+                                className={`text-2xl hover:text-amber-500 transition-colors ${activeBtn === 'profile' ? 'text-amber-500' : ''}`}
+                            >
+                                <CgProfile className="text-[22px]" />
+                            </Link>
                         </li>
-
                     </ul>
 
+                    {/* Mobil menü */}
                     <div className={`
                         lg:hidden fixed inset-0 bg-zinc-900/95 backdrop-blur-sm transition-all duration-300 z-50
                         ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}
@@ -219,8 +249,6 @@ const Navbar = () => {
                                 ))}
                             </ul>
                         </div>
-
-
                     </div>
                 </div>
             </nav>

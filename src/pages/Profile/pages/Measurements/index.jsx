@@ -1,10 +1,11 @@
-import { useState } from 'react';
 import Navbar from '../../../../components/Navbar';
 import Container from '../../../../components/shared/Container';
 import ProfileNavigation from '../../components/ProfileNavigation';
+import AddMeasurementModal from './components/AddMeasurementModal';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import { IoAdd, IoScale, IoTrendingUp, IoBodyOutline } from 'react-icons/io5';
-import AddMeasurementModal from './components/AddMeasurementModal';
+import { useState } from 'react';
+
 
 const Measurements = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);

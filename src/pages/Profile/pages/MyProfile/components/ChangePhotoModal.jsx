@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import Modal from '../../../../../components/shared/Modal';
+import { useState } from 'react';
 import { IoCloudUpload, IoTrash, IoSave } from 'react-icons/io5';
 
 const ChangePhotoModal = ({ isOpen, setIsOpen, type }) => {

@@ -4,16 +4,16 @@ import { useModalStore } from '../../../store/modalStore'
 const Header = () => {
     const setRegisterModal = useModalStore((state) => state.changeRegisterModal)
     return (
-        <div className='flex justify-between items-center'>
-            <div className="flex flex-col gap-5 w-100 pt-20 pb-20">
-                <div className="text-6xl font-bold">
+        <div className='flex flex-col md:flex-row justify-between items-center gap-8 md:gap-0'>
+            <div className="flex flex-col gap-5 w-full md:w-1/2 pt-10 md:pt-20 pb-10 md:pb-20">
+                <div className="text-4xl md:text-6xl font-bold">
                     <span className="bg-gradient-to-r from-amber-500 to-amber-300 bg-clip-text text-transparent">
                         Spor yolculuğunuza
                     </span>
                     <br />
                     ortak olalım
                 </div>
-                <p className="text-zinc-400 text-lg leading-relaxed">
+                <p className="text-zinc-400 text-base md:text-lg leading-relaxed">
                     Gelişimini eski usul not defterleriyle mi takip etmeye devam edeceksin,
                     yoksa modern dünyanın sunduğu imkanlardan yararlanarak tamamen ücretsiz
                     bir şekilde bu hizmetten faydalanmak mı istersin? Geçmişin alışkanlıklarına
@@ -21,18 +21,17 @@ const Header = () => {
                 </p>
                 <Button
                     onClick={(e) => setRegisterModal(true)}
-
                 >
                     Hemen Kayıt Ol
                 </Button>
             </div>
-            <div className='w-100'>
+            <div className='w-full md:w-1/2 flex justify-center md:justify-end'>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 100 100"
                     style={{ enableBackground: "new 0 0 100 100" }}
                     xmlSpace="preserve"
-                    className="fill-amber-500 drop-shadow-2xl"
+                    className="fill-amber-500 drop-shadow-2xl w-64 md:w-96"
                 >
                     <path d="M48.5,20.7c0,0,3.5-3.6,9.1-3.5c5.6,0.1,8.5,3.3,8.5,3.3L70.4,9l-8.8,2.3l-4-6.9l-4.4,7.1l-9-2.9L48.5,20.7z" />
                     <path d="M57.6,20.9c5.4,0,9.9,4.4,9.9,9.9c0,5.4-4.4,9.8-9.9,9.8c-5.4,0-9.8-4.4-9.8-9.8C47.8,25.3,52.2,20.9,57.6,20.9L57.6,20.9z" />
