@@ -5,22 +5,22 @@ const ExerciseTable = ({ exercises, onViewClick, onEditClick }) => {
         <div>
             <h2 className="text-xl mb-4 text-white">Pazartesi Antrenman Programı</h2>
             <div className="overflow-x-auto">
-                <table className="w-full border-collapse bg-zinc-900 rounded-lg overflow-hidden">
+                <table className="w-full border-collapse bg-zinc-800 rounded-lg overflow-hidden">
                     <thead>
-                        <tr className="bg-zinc-800">
-                            <th className="p-4 text-left text-zinc-400 font-medium border-b border-zinc-700">Hareket</th>
-                            <th className="p-4 text-left text-zinc-400 font-medium border-b border-zinc-700">Set</th>
-                            <th className="p-4 text-left text-zinc-400 font-medium border-b border-zinc-700">Tekrar</th>
-                            <th className="p-4 text-left text-zinc-400 font-medium border-b border-zinc-700">Son Antrenman Notu</th>
-                            <th className="p-4 text-left text-zinc-400 font-medium border-b border-zinc-700">İşlemler</th>
+                        <tr className="bg-zinc-700">
+                            <th className="p-4 text-left text-zinc- font-extralight text-[12px] border-b border-zinc-700">Hareket</th>
+                            <th className="p-4 text-left text-zinc- font-extralight text-[12px] border-b border-zinc-700">Set</th>
+                            <th className="p-4 text-left text-zinc- font-extralight text-[12px] border-b border-zinc-700">Tekrar</th>
+                            <th className="p-4 text-left text-zinc- font-extralight text-[12px] border-b border-zinc-700">Son Antrenman Notu</th>
+                            <th className="p-4 text-left text-zinc- font-extralight text-[12px] border-b border-zinc-700">İşlemler</th>
                         </tr>
                     </thead>
                     <tbody>
                         {exercises.map((exercise) => (
-                            <tr key={exercise.id} className="border-b border-zinc-800 last:border-b-0 hover:bg-zinc-800/50 transition-colors">
+                            <tr key={exercise.id} className="border-b border-zinc-700 last:border-b-0 hover:bg-zinc-700/50 transition-colors">
                                 <td className="p-4 text-xl text-white font-extralight">{exercise.name}</td>
-                                <td className="p-4 text-zinc-400">{exercise.sets}</td>
-                                <td className="p-4 text-zinc-400">{exercise.reps}</td>
+                                <td className="p-4 text-zinc-300">{exercise.sets}</td>
+                                <td className="p-4 text-zinc-300">{exercise.reps}</td>
                                 <td className="p-4 max-w-[300px]">
                                     {exercise.history && exercise.history[0] ? (
                                         <div className="space-y-1">
@@ -48,14 +48,14 @@ const ExerciseTable = ({ exercises, onViewClick, onEditClick }) => {
                                     <div className="flex gap-3">
                                         <button
                                             onClick={() => onViewClick(exercise)}
-                                            className="flex items-center gap-2 px-4 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-amber-400 rounded-md transition-all text-sm font-medium min-w-[100px] justify-center cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
+                                            className="flex items-center gap-2 px-4 py-2.5 bg-zinc-700 hover:bg-zinc-600 text-amber-400 rounded-md transition-all text-sm font-medium min-w-[100px] justify-center cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
                                         >
                                             <IoEyeOutline className="text-lg" />
                                             Görüntüle
                                         </button>
                                         <button
                                             onClick={() => onEditClick(exercise)}
-                                            className="flex items-center gap-2 px-4 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-amber-400 rounded-md transition-all text-sm font-medium min-w-[100px] justify-center cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
+                                            className="flex items-center gap-2 px-4 py-2.5 bg-zinc-700 hover:bg-zinc-700 text-amber-400 rounded-md transition-all text-sm font-medium min-w-[100px] justify-center cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
                                         >
                                             <IoPencilOutline className="text-lg" />
                                             Düzenle

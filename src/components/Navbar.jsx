@@ -29,6 +29,15 @@ const Navbar = () => {
             case "/profil":
                 setActiveBtn('profile')
                 break;
+            case "/profil/ayarlarim":
+                setActiveBtn('profile')
+                break;
+            case "/profil/gunluk":
+                setActiveBtn('profile')
+                break;
+            case "/profil/antreman-programlarim":
+                setActiveBtn('profile')
+                break;
         }
     }, [])
 
@@ -46,7 +55,7 @@ const Navbar = () => {
             <nav className='w-full h-[100px] flex items-center justify-center p-5'>
 
                 {/* Pages */}
-                <ul className="bg-zinc-900/80 backdrop-blur-sm p-[15px] w-full rounded-xl flex gap-5 items-center text-[18px]">
+                <ul className="bg-zinc-800/80 backdrop-blur-sm p-[15px] w-full rounded-xl flex gap-5 items-center text-[18px]">
                     <li className={` ${activeBtn === 'home' ? "p-2 rounded-xl bg-amber-500 text-black" : "hover:text-amber-500"}`}>
                         <Link to={'/'} className="flex items-center gap-2">
                             <FaHome />

@@ -37,8 +37,8 @@ const Modal = ({ children, title = "", isOpen, setIsOpen, size = "default" }) =>
                 className="fixed inset-0 bg-black/70 backdrop-blur-sm -z-10"
                 onClick={closeModal}
             />
-            <div className={`relative ${sizeClasses[size]} bg-[#1a1a1a] border border-zinc-800 rounded-lg shadow-xl z-10`}>
-                <div className="w-full flex justify-between items-center p-5 text-2xl border-b border-zinc-800 bg-[#141414] rounded-t-lg">
+            <div className={`relative ${sizeClasses[size]} bg-zinc-900 border border-zinc-800 rounded-lg shadow-xl z-10`}>
+                <div className="w-full flex justify-between items-center p-5 text-2xl border-b border-zinc-800 bg-zinc-800 rounded-t-lg">
                     <span className="font-bold">{title}</span>
                     <IoCloseSharp
                         className="cursor-pointer text-red-500 hover:text-red-600 transition-colors"
