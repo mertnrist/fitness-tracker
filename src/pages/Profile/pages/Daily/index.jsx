@@ -67,110 +67,105 @@ const Daily = () => {
     }, []);
 
     return (
-        <div>
-            <Navbar />
-            <Container>
-                <ProfileNavigation />
-
-                {/* Üst Kısım - Özet Bilgiler */}
-                <div className="mb-12">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-                        <div className="bg-zinc-800/50 rounded-xl p-6 border border-zinc-700/30">
-                            <div className="flex items-center gap-3 mb-3">
-                                <div className="p-2 bg-amber-500/10 rounded-lg">
-                                    <IoCalendarOutline className="text-2xl text-amber-500" />
-                                </div>
-                                <h3 className="text-zinc-400 font-medium">Bu Ay</h3>
+        <>
+            {/* Üst Kısım - Özet Bilgiler */}
+            <div className="mb-12">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                    <div className="bg-zinc-800/50 rounded-xl p-6 border border-zinc-700/30">
+                        <div className="flex items-center gap-3 mb-3">
+                            <div className="p-2 bg-amber-500/10 rounded-lg">
+                                <IoCalendarOutline className="text-2xl text-amber-500" />
                             </div>
-                            <p className="text-3xl font-bold text-white">12 Antrenman</p>
+                            <h3 className="text-zinc-400 font-medium">Bu Ay</h3>
                         </div>
-
-                        <div className="bg-zinc-800/50 rounded-xl p-6 border border-zinc-700/30">
-                            <div className="flex items-center gap-3 mb-3">
-                                <div className="p-2 bg-amber-500/10 rounded-lg">
-                                    <IoFitnessOutline className="text-2xl text-amber-500" />
-                                </div>
-                                <h3 className="text-zinc-400 font-medium">Toplam Süre</h3>
-                            </div>
-                            <p className="text-3xl font-bold text-white">18.5 Saat</p>
-                        </div>
-
-                        <div className="bg-zinc-800/50 rounded-xl p-6 border border-zinc-700/30">
-                            <div className="flex items-center gap-3 mb-3">
-                                <div className="p-2 bg-amber-500/10 rounded-lg">
-                                    <IoTrendingUp className="text-2xl text-amber-500" />
-                                </div>
-                                <h3 className="text-zinc-400 font-medium">Ortalama</h3>
-                            </div>
-                            <p className="text-3xl font-bold text-white">4.2/Hafta</p>
-                        </div>
+                        <p className="text-3xl font-bold text-white">12 Antrenman</p>
                     </div>
 
-                    {/* Takvim Başlığı */}
-                    <div className="flex items-center justify-between mb-6">
-                        <h2 className="text-2xl font-bold text-white">
-                            Antrenman Takvimi
-                        </h2>
+                    <div className="bg-zinc-800/50 rounded-xl p-6 border border-zinc-700/30">
+                        <div className="flex items-center gap-3 mb-3">
+                            <div className="p-2 bg-amber-500/10 rounded-lg">
+                                <IoFitnessOutline className="text-2xl text-amber-500" />
+                            </div>
+                            <h3 className="text-zinc-400 font-medium">Toplam Süre</h3>
+                        </div>
+                        <p className="text-3xl font-bold text-white">18.5 Saat</p>
+                    </div>
+
+                    <div className="bg-zinc-800/50 rounded-xl p-6 border border-zinc-700/30">
+                        <div className="flex items-center gap-3 mb-3">
+                            <div className="p-2 bg-amber-500/10 rounded-lg">
+                                <IoTrendingUp className="text-2xl text-amber-500" />
+                            </div>
+                            <h3 className="text-zinc-400 font-medium">Ortalama</h3>
+                        </div>
+                        <p className="text-3xl font-bold text-white">4.2/Hafta</p>
                     </div>
                 </div>
 
-                {/* Takvim */}
-                <div className="space-y-8">
-                    {months.map((month, monthIndex) => {
-                        const monthData = workoutData[monthIndex];
-                        if (!monthData || Object.keys(monthData).length === 0) return null;
+                {/* Takvim Başlığı */}
+                <div className="flex items-center justify-between mb-6">
+                    <h2 className="text-2xl font-bold text-white">
+                        Antrenman Takvimi
+                    </h2>
+                </div>
+            </div>
 
-                        return (
-                            <div key={monthIndex} className="bg-zinc-800/30 rounded-xl p-6 border border-zinc-700/30">
-                                <h3 className="text-xl text-amber-500 font-semibold mb-4 flex items-center gap-2">
-                                    <IoCalendarOutline className="text-xl" />
-                                    {month}
-                                </h3>
-                                <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-3">
-                                    {Object.keys(monthData).map(day => {
-                                        const dayNum = parseInt(day);
-                                        const isCurrentDate = monthIndex === currentMonth && dayNum === currentDay;
+            {/* Takvim */}
+            <div className="space-y-8 pb-5">
+                {months.map((month, monthIndex) => {
+                    const monthData = workoutData[monthIndex];
+                    if (!monthData || Object.keys(monthData).length === 0) return null;
 
-                                        return (
-                                            <div
-                                                key={`${monthIndex}-${day}`}
-                                                ref={isCurrentDate ? currentDateRef : null}
-                                                onClick={() => handleDayClick(day, month, monthIndex)}
-                                                className={`
+                    return (
+                        <div key={monthIndex} className="bg-zinc-800/30 rounded-xl p-6 border border-zinc-700/30">
+                            <h3 className="text-xl text-amber-500 font-semibold mb-4 flex items-center gap-2">
+                                <IoCalendarOutline className="text-xl" />
+                                {month}
+                            </h3>
+                            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-3">
+                                {Object.keys(monthData).map(day => {
+                                    const dayNum = parseInt(day);
+                                    const isCurrentDate = monthIndex === currentMonth && dayNum === currentDay;
+
+                                    return (
+                                        <div
+                                            key={`${monthIndex}-${day}`}
+                                            ref={isCurrentDate ? currentDateRef : null}
+                                            onClick={() => handleDayClick(day, month, monthIndex)}
+                                            className={`
                                                     relative p-4 rounded-lg cursor-pointer transition-all duration-200
                                                     hover:transform hover:scale-105
                                                     ${isCurrentDate
-                                                        ? 'bg-amber-500 text-black shadow-lg shadow-amber-500/20'
-                                                        : 'bg-zinc-800/50 text-white hover:bg-zinc-700/50'
-                                                    }
+                                                    ? 'bg-amber-500 text-black shadow-lg shadow-amber-500/20'
+                                                    : 'bg-zinc-800/50 text-white hover:bg-zinc-700/50'
+                                                }
                                                 `}
-                                            >
-                                                <div className="flex items-center justify-between">
-                                                    <span className={`text-base font-medium ${isCurrentDate ? 'text-black' : 'text-zinc-400'}`}>
-                                                        {dayNum}
-                                                    </span>
-                                                    <div className={`w-2 h-2 rounded-full ${isCurrentDate ? 'bg-black/40' : 'bg-amber-500'}`} />
-                                                </div>
-                                                <div className="mt-2 text-xs text-zinc-500">
-                                                    {monthData[day].exercises.length} hareket
-                                                </div>
+                                        >
+                                            <div className="flex items-center justify-between">
+                                                <span className={`text-base font-medium ${isCurrentDate ? 'text-black' : 'text-zinc-400'}`}>
+                                                    {dayNum}
+                                                </span>
+                                                <div className={`w-2 h-2 rounded-full ${isCurrentDate ? 'bg-black/40' : 'bg-amber-500'}`} />
                                             </div>
-                                        );
-                                    })}
-                                </div>
+                                            <div className="mt-2 text-xs text-zinc-500">
+                                                {monthData[day].exercises.length} hareket
+                                            </div>
+                                        </div>
+                                    );
+                                })}
                             </div>
-                        );
-                    })}
-                </div>
+                        </div>
+                    );
+                })}
+            </div>
 
-                <DailyWorkoutModal
-                    isOpen={isModalOpen}
-                    setIsOpen={setIsModalOpen}
-                    workout={selectedWorkout}
-                    date={selectedDate}
-                />
-            </Container>
-        </div>
+            <DailyWorkoutModal
+                isOpen={isModalOpen}
+                setIsOpen={setIsModalOpen}
+                workout={selectedWorkout}
+                date={selectedDate}
+            />
+        </>
     )
 }
 

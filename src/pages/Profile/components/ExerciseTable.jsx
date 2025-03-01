@@ -2,7 +2,7 @@ import { IoEyeOutline, IoPencilOutline } from "react-icons/io5";
 
 const ExerciseTable = ({ exercises, onViewClick, onEditClick }) => {
     return (
-        <div>
+        <div className="pb-5">
             <h2 className="text-xl mb-4 text-white">Pazartesi Antrenman Programı</h2>
 
             {/* Masaüstü görünümü */}

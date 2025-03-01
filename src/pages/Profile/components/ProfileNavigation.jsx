@@ -35,7 +35,7 @@ const ProfileNav = () => {
         },
         {
             name: "Arkadaşlarım",
-            path: "/profil/arkadaslarim",
+            path: "/profil/arkadaslar",
             icon: <IoPeople className="text-xl" />
         },
         {
@@ -48,7 +48,11 @@ const ProfileNav = () => {
             path: '/profil/ayarlarim',
             icon: <IoSettings className="text-xl" />
         },
-
+        {
+            name: "Partner Bul",
+            path: "/profil/eslesme",
+            icon: <IoBarbell className="text-xl" />
+        },
     ];
 
     return (

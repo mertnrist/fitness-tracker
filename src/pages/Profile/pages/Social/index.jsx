@@ -24,103 +24,100 @@ const Social = () => {
     ]);
 
     return (
-        <div>
-            <Navbar />
-            <Container>
-                <div className="space-y-6">
-                    {/* Arama Çubuğu */}
-                    <div className="relative">
-                        <input
-                            type="text"
-                            placeholder="Kullanıcı ara..."
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            className="w-full bg-zinc-800/50 border border-zinc-700/30 rounded-xl px-4 py-3 pl-12 text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                        />
-                        <IoSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400 text-xl" />
-                    </div>
-
-                    {/* Sekmeler */}
-                    <div className="flex gap-4 border-b border-zinc-700/30">
-                        <button
-                            onClick={() => setActiveTab('friends')}
-                            className={`px-4 py-2 text-sm font-medium transition-colors ${activeTab === 'friends'
-                                ? 'text-amber-500 border-b-2 border-amber-500'
-                                : 'text-zinc-400 hover:text-white'
-                                }`}
-                        >
-                            Arkadaşlarım
-                        </button>
-                        <button
-                            onClick={() => setActiveTab('requests')}
-                            className={`px-4 py-2 text-sm font-medium transition-colors ${activeTab === 'requests'
-                                ? 'text-amber-500 border-b-2 border-amber-500'
-                                : 'text-zinc-400 hover:text-white'
-                                }`}
-                        >
-                            İstekler
-                        </button>
-                        <button
-                            onClick={() => setActiveTab('suggestions')}
-                            className={`px-4 py-2 text-sm font-medium transition-colors ${activeTab === 'suggestions'
-                                ? 'text-amber-500 border-b-2 border-amber-500'
-                                : 'text-zinc-400 hover:text-white'
-                                }`}
-                        >
-                            Öneriler
-                        </button>
-                    </div>
-
-                    {/* İçerik */}
-                    <div className="space-y-4">
-                        {activeTab === 'friends' && (
-                            <>
-                                <h2 className="text-xl font-bold text-white">Arkadaşlarım</h2>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    {friends.map(friend => (
-                                        <FriendCard
-                                            key={friend.id}
-                                            user={friend}
-                                            type="friend"
-                                        />
-                                    ))}
-                                </div>
-                            </>
-                        )}
-
-                        {activeTab === 'requests' && (
-                            <>
-                                <h2 className="text-xl font-bold text-white">Arkadaşlık İstekleri</h2>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    {friendRequests.map(request => (
-                                        <FriendCard
-                                            key={request.id}
-                                            user={request}
-                                            type="request"
-                                        />
-                                    ))}
-                                </div>
-                            </>
-                        )}
-
-                        {activeTab === 'suggestions' && (
-                            <>
-                                <h2 className="text-xl font-bold text-white">Önerilen Kişiler</h2>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    {suggestions.map(suggestion => (
-                                        <FriendCard
-                                            key={suggestion.id}
-                                            user={suggestion}
-                                            type="suggestion"
-                                        />
-                                    ))}
-                                </div>
-                            </>
-                        )}
-                    </div>
+        <>
+            <div className="space-y-6">
+                {/* Arama Çubuğu */}
+                <div className="relative">
+                    <input
+                        type="text"
+                        placeholder="Kullanıcı ara..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="w-full bg-zinc-800/50 border border-zinc-700/30 rounded-xl px-4 py-3 pl-12 text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                    />
+                    <IoSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400 text-xl" />
                 </div>
-            </Container>
-        </div>
+
+                {/* Sekmeler */}
+                <div className="flex gap-4 border-b border-zinc-700/30">
+                    <button
+                        onClick={() => setActiveTab('friends')}
+                        className={`px-4 py-2 text-sm font-medium transition-colors ${activeTab === 'friends'
+                            ? 'text-amber-500 border-b-2 border-amber-500'
+                            : 'text-zinc-400 hover:text-white'
+                            }`}
+                    >
+                        Arkadaşlarım
+                    </button>
+                    <button
+                        onClick={() => setActiveTab('requests')}
+                        className={`px-4 py-2 text-sm font-medium transition-colors ${activeTab === 'requests'
+                            ? 'text-amber-500 border-b-2 border-amber-500'
+                            : 'text-zinc-400 hover:text-white'
+                            }`}
+                    >
+                        İstekler
+                    </button>
+                    <button
+                        onClick={() => setActiveTab('suggestions')}
+                        className={`px-4 py-2 text-sm font-medium transition-colors ${activeTab === 'suggestions'
+                            ? 'text-amber-500 border-b-2 border-amber-500'
+                            : 'text-zinc-400 hover:text-white'
+                            }`}
+                    >
+                        Öneriler
+                    </button>
+                </div>
+
+                {/* İçerik */}
+                <div className="space-y-4">
+                    {activeTab === 'friends' && (
+                        <>
+                            <h2 className="text-xl font-bold text-white">Arkadaşlarım</h2>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                {friends.map(friend => (
+                                    <FriendCard
+                                        key={friend.id}
+                                        user={friend}
+                                        type="friend"
+                                    />
+                                ))}
+                            </div>
+                        </>
+                    )}
+
+                    {activeTab === 'requests' && (
+                        <>
+                            <h2 className="text-xl font-bold text-white">Arkadaşlık İstekleri</h2>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                {friendRequests.map(request => (
+                                    <FriendCard
+                                        key={request.id}
+                                        user={request}
+                                        type="request"
+                                    />
+                                ))}
+                            </div>
+                        </>
+                    )}
+
+                    {activeTab === 'suggestions' && (
+                        <>
+                            <h2 className="text-xl font-bold text-white">Önerilen Kişiler</h2>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                {suggestions.map(suggestion => (
+                                    <FriendCard
+                                        key={suggestion.id}
+                                        user={suggestion}
+                                        type="suggestion"
+                                    />
+                                ))}
+                            </div>
+                        </>
+                    )}
+                </div>
+            </div>
+        </>
     );
 };
 

@@ -11,6 +11,8 @@ import Social from "../pages/Profile/pages/Social";
 import UserProfile from "../pages/Profile/pages/UserProfile";
 import MyProfile from "../pages/Profile/pages/MyProfile";
 import Chat from "../pages/Profile/pages/Chat";
+import Match from "../pages/Profile/pages/Match";
+import Dashboard from "../pages/Profile/pages/Dashboard";
 
 const router = createBrowserRouter([
     {
@@ -24,38 +26,48 @@ const router = createBrowserRouter([
     {
         path: '/profil',
         element: <Profile />,
-    },
-    {
-        path: '/profil/gunluk',
-        element: <Daily />
-    },
-    {
-        path: '/profil/antreman-programlarim',
-        element: <Programs />
-    },
-    {
-        path: '/profil/ben',
-        element: <MyProfile />
-    },
-    {
-        path: '/profil/ayarlarim',
-        element: <Settings />
-    },
-    {
-        path: '/profil/olcumler',
-        element: <Measurements />
-    },
-    {
-        path: '/profil/arkadaslar',
-        element: <Social />
-    },
-    {
-        path: '/profil/:username',
-        element: <UserProfile />
-    },
-    {
-        path: '/profil/mesajlarim',
-        element: <Chat />
+        children: [
+            {
+                index: true,
+                element: <Dashboard />
+            },
+            {
+                path: 'gunluk',
+                element: <Daily />
+            },
+            {
+                path: 'antreman-programlarim',
+                element: <Programs />
+            },
+            {
+                path: 'ben',
+                element: <MyProfile />
+            },
+            {
+                path: 'ayarlarim',
+                element: <Settings />
+            },
+            {
+                path: 'olcumler',
+                element: <Measurements />
+            },
+            {
+                path: 'arkadaslar',
+                element: <Social />
+            },
+            {
+                path: ':username',
+                element: <UserProfile />
+            },
+            {
+                path: 'mesajlarim',
+                element: <Chat />
+            },
+            {
+                path: 'eslesme',
+                element: <Match />
+            }
+        ]
     }
 ])
 

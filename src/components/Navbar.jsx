@@ -107,13 +107,13 @@ const Navbar = () => {
     return (
         <>
             {registerModal &&
-                <Modal isOpen={registerModal} setIsOpen={setRegisterModal} title="Kayıt Ol" size="fullscreen">
+                <Modal isOpen={registerModal} setIsOpen={setRegisterModal} title="Kayıt Ol" size="default">
                     <Register />
                 </Modal>
             }
 
             {loginModal &&
-                <Modal isOpen={loginModal} setIsOpen={setLoginModal} title="Giriş Yap" size="fullscreen">
+                <Modal isOpen={loginModal} setIsOpen={setLoginModal} title="Giriş Yap" size="default">
                     <Login />
                 </Modal>
             }
