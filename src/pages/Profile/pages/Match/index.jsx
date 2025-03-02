@@ -374,27 +374,22 @@ const Match = () => {
 
     if (currentProfile >= profiles.length) {
         return (
-            <div>
-                <Navbar />
-                <Container>
-                    <div className="flex flex-col items-center justify-center min-h-[60vh] text-center p-4">
-                        <div className="bg-zinc-800/50 p-8 rounded-2xl border border-zinc-700/30 max-w-md">
-                            <IoBarbell className="text-6xl text-amber-500 mx-auto mb-4" />
-                            <h2 className="text-2xl font-bold text-white mb-3">
-                                Şu an için tüm adayları gördünüz
-                            </h2>
-                            <p className="text-zinc-400 mb-6">
-                                Yakınızda yeni antrenman partnerleri bulmak için daha sonra tekrar kontrol edin
-                            </p>
-                            <button
-                                onClick={() => setCurrentProfile(0)}
-                                className="bg-amber-500 text-black px-6 py-3 rounded-xl font-medium hover:bg-amber-600 transition-colors"
-                            >
-                                Profilleri Yeniden Gör
-                            </button>
-                        </div>
-                    </div>
-                </Container>
+            <div className="flex flex-col items-center justify-center min-h-[60vh] text-center p-4">
+                <div className="bg-zinc-800/50 p-8 rounded-2xl border border-zinc-700/30 max-w-md">
+                    <IoBarbell className="text-6xl text-amber-500 mx-auto mb-4" />
+                    <h2 className="text-2xl font-bold text-white mb-3">
+                        Şu an için tüm adayları gördünüz
+                    </h2>
+                    <p className="text-zinc-400 mb-6">
+                        Yakınızda yeni antrenman partnerleri bulmak için daha sonra tekrar kontrol edin
+                    </p>
+                    <button
+                        onClick={() => setCurrentProfile(0)}
+                        className="bg-amber-500 text-black px-6 py-3 rounded-xl font-medium hover:bg-amber-600 transition-colors"
+                    >
+                        Profilleri Yeniden Gör
+                    </button>
+                </div>
             </div>
         );
     }
