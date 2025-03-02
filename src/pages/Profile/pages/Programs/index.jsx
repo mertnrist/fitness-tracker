@@ -1,6 +1,3 @@
-import Navbar from '../../../../components/Navbar'
-import Container from '../../../../components/shared/Container'
-import ProfileNavigation from '../../components/ProfileNavigation'
 import EditProgramModal from './components/EditProgramModal';
 import CreateProgramModal from './components/CreateProgramModal';
 import { useState } from 'react';

@@ -1,9 +1,6 @@
-import { useState, useEffect } from 'react';
-import { IoSend, IoEllipsisVertical, IoAdd } from 'react-icons/io5';
-import Container from '../../../../components/shared/Container';
-import Navbar from '../../../../components/Navbar';
+import { useState } from 'react';
+import { IoSend, IoAdd } from 'react-icons/io5';
 import Modal from '../../../../components/shared/Modal';
-import ProfileNavigation from '../../components/ProfileNavigation'
 
 function Chat() {
     const [selectedChat, setSelectedChat] = useState(null);

@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
-import { IoClose, IoCheckmark, IoBarbell, IoPeople, IoLocation, IoTime, IoFitness, IoInformation, IoHeart, IoHeartOutline, IoChevronBack, IoChevronForward } from 'react-icons/io5';
+import { IoClose, IoCheckmark, IoBarbell, IoLocation, IoTime, IoFitness, IoInformation, IoHeart, IoHeartOutline, IoChevronBack, IoChevronForward } from 'react-icons/io5';
 import Container from '../../../../components/shared/Container';
 import Navbar from '../../../../components/Navbar';
-import ProfileNavigation from '../../components/ProfileNavigation';
 import Modal from '../../../../components/shared/Modal';
 
 const Match = () => {
@@ -406,7 +405,7 @@ const Match = () => {
     return (
         <>
             {/* Beğeni Butonları - Mobilde alt alta */}
-            <div className="max-w-4xl mx-auto mb-4 px-2 md:px-4 pt-4 md:pt-8">
+            <div className="  mb-4 px-2 md:px-4 ">
                 <div className="flex flex-col md:flex-row gap-2 md:gap-4 mb-4 md:mb-8">
                     <button
                         onClick={() => setShowLikesModal(true)}
@@ -431,7 +430,7 @@ const Match = () => {
                 </div>
 
                 {/* Ana İçerik - Resim genişliği düzeltildi */}
-                <div className="max-w-4xl mx-auto pb-4 md:pb-8">
+                <div className=" pb-4 md:pb-8">
                     <div className="grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-6">
                         {/* Ana Profil Kartı */}
                         <div className="md:col-span-3 w-full">

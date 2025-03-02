@@ -5,9 +5,6 @@ import {
     IoNotificationsOutline,
     IoShieldOutline
 } from 'react-icons/io5';
-import Navbar from '../../../../components/Navbar';
-import Container from '../../../../components/shared/Container';
-import ProfileNavigation from '../../components/ProfileNavigation';
 import PersonalInfo from './components/PersonalInfo';
 import Bio from './components/Bio';
 import MatchPreferences from './components/MatchPreferences';
@@ -151,7 +148,7 @@ const Settings = () => {
 
     return (
         <>
-            <div className="mb-8 border-b border-zinc-700 overflow-x-auto">
+            <div className="mb-8 overflow-x-auto flex flex-col gap-5">
                 <div className="flex whitespace-nowrap min-w-full md:min-w-0">
                     {tabs.map((tab) => (
                         <button
@@ -176,11 +173,12 @@ const Settings = () => {
                         </button>
                     ))}
                 </div>
+                <div className="space-y-8 pb-10">
+                    {renderContent()}
+                </div>
             </div>
 
-            <div className="space-y-8 pb-10">
-                {renderContent()}
-            </div>
+
         </>
     );
 };

@@ -1,7 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import Navbar from '../../../../components/Navbar'
-import Container from '../../../../components/shared/Container'
-import ProfileNavigation from '../../components/ProfileNavigation'
 import DailyWorkoutModal from './components/DailyWorkoutModal'
 import { IoCalendarOutline, IoFitnessOutline, IoTrendingUp } from 'react-icons/io5';
 
@@ -108,55 +105,54 @@ const Daily = () => {
                         Antrenman Takvimi
                     </h2>
                 </div>
-            </div>
 
-            {/* Takvim */}
-            <div className="space-y-8 pb-5">
-                {months.map((month, monthIndex) => {
-                    const monthData = workoutData[monthIndex];
-                    if (!monthData || Object.keys(monthData).length === 0) return null;
+                <div className="space-y-8 pb-5">
+                    {months.map((month, monthIndex) => {
+                        const monthData = workoutData[monthIndex];
+                        if (!monthData || Object.keys(monthData).length === 0) return null;
 
-                    return (
-                        <div key={monthIndex} className="bg-zinc-800/30 rounded-xl p-6 border border-zinc-700/30">
-                            <h3 className="text-xl text-amber-500 font-semibold mb-4 flex items-center gap-2">
-                                <IoCalendarOutline className="text-xl" />
-                                {month}
-                            </h3>
-                            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-3">
-                                {Object.keys(monthData).map(day => {
-                                    const dayNum = parseInt(day);
-                                    const isCurrentDate = monthIndex === currentMonth && dayNum === currentDay;
+                        return (
+                            <div key={monthIndex} className="bg-zinc-800/30 rounded-xl p-6 border border-zinc-700/30">
+                                <h3 className="text-xl text-amber-500 font-semibold mb-4 flex items-center gap-2">
+                                    <IoCalendarOutline className="text-xl" />
+                                    {month}
+                                </h3>
+                                <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-3">
+                                    {Object.keys(monthData).map(day => {
+                                        const dayNum = parseInt(day);
+                                        const isCurrentDate = monthIndex === currentMonth && dayNum === currentDay;
 
-                                    return (
-                                        <div
-                                            key={`${monthIndex}-${day}`}
-                                            ref={isCurrentDate ? currentDateRef : null}
-                                            onClick={() => handleDayClick(day, month, monthIndex)}
-                                            className={`
+                                        return (
+                                            <div
+                                                key={`${monthIndex}-${day}`}
+                                                ref={isCurrentDate ? currentDateRef : null}
+                                                onClick={() => handleDayClick(day, month, monthIndex)}
+                                                className={`
                                                     relative p-4 rounded-lg cursor-pointer transition-all duration-200
                                                     hover:transform hover:scale-105
                                                     ${isCurrentDate
-                                                    ? 'bg-amber-500 text-black shadow-lg shadow-amber-500/20'
-                                                    : 'bg-zinc-800/50 text-white hover:bg-zinc-700/50'
-                                                }
+                                                        ? 'bg-amber-500 text-black shadow-lg shadow-amber-500/20'
+                                                        : 'bg-zinc-800/50 text-white hover:bg-zinc-700/50'
+                                                    }
                                                 `}
-                                        >
-                                            <div className="flex items-center justify-between">
-                                                <span className={`text-base font-medium ${isCurrentDate ? 'text-black' : 'text-zinc-400'}`}>
-                                                    {dayNum}
-                                                </span>
-                                                <div className={`w-2 h-2 rounded-full ${isCurrentDate ? 'bg-black/40' : 'bg-amber-500'}`} />
+                                            >
+                                                <div className="flex items-center justify-between">
+                                                    <span className={`text-base font-medium ${isCurrentDate ? 'text-black' : 'text-zinc-400'}`}>
+                                                        {dayNum}
+                                                    </span>
+                                                    <div className={`w-2 h-2 rounded-full ${isCurrentDate ? 'bg-black/40' : 'bg-amber-500'}`} />
+                                                </div>
+                                                <div className="mt-2 text-xs text-zinc-500">
+                                                    {monthData[day].exercises.length} hareket
+                                                </div>
                                             </div>
-                                            <div className="mt-2 text-xs text-zinc-500">
-                                                {monthData[day].exercises.length} hareket
-                                            </div>
-                                        </div>
-                                    );
-                                })}
+                                        );
+                                    })}
+                                </div>
                             </div>
-                        </div>
-                    );
-                })}
+                        );
+                    })}
+                </div>
             </div>
 
             <DailyWorkoutModal

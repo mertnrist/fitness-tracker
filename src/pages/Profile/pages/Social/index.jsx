@@ -1,8 +1,5 @@
 import { useState } from 'react';
 import { IoSearch, IoPersonAdd, IoCheckmark, IoClose } from 'react-icons/io5';
-import Container from '../../../../components/shared/Container';
-import Navbar from '../../../../components/Navbar';
-import ProfileNavigation from '../../components/ProfileNavigation';
 
 const Social = () => {
     const [searchQuery, setSearchQuery] = useState('');

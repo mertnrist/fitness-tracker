@@ -44,15 +44,16 @@ const ProfileNav = () => {
             icon: <IoChatbubble className="text-xl" />
         },
         {
-            name: 'Ayarlar',
-            path: '/profil/ayarlarim',
-            icon: <IoSettings className="text-xl" />
-        },
-        {
             name: "Partner Bul",
             path: "/profil/eslesme",
             icon: <IoBarbell className="text-xl" />
         },
+        {
+            name: 'Ayarlar',
+            path: '/profil/ayarlarim',
+            icon: <IoSettings className="text-xl" />
+        },
+
     ];
 
     return (

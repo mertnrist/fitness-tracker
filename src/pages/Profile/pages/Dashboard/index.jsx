@@ -1,6 +1,3 @@
-import Navbar from '../../../../components/Navbar';
-import Container from '../../../../components/shared/Container'
-import ProfileNavigation from '../../components/ProfileNavigation';
 import ExerciseTable from '../../components/ExerciseTable';
 import ViewExerciseModal from '../../components/Modals/ViewExerciseModal';
 import EditExerciseModal from '../../components/Modals/EditExerciseModal';

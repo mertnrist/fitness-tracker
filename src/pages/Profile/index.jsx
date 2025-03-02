@@ -8,8 +8,10 @@ const Profile = () => {
         <div>
             <Navbar />
             <Container>
-                <ProfileNavigation />
-                <Outlet />
+                <div className="grid grid-cols-1 lg:grid-cols-[300px_auto] gap-5">
+                    <ProfileNavigation />
+                    <Outlet />
+                </div>
             </Container>
         </div>
     )

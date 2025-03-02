@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { IoBarbell, IoPeople, IoCalendar, IoTrophy, IoPersonAdd, IoCheckmark } from 'react-icons/io5';
-import Container from '../../../../components/shared/Container';
-import Navbar from '../../../../components/Navbar';
 
 const UserProfile = () => {
     const { username } = useParams();

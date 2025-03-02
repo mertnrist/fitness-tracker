@@ -1,9 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IoSettings, IoCamera, IoTrophy, IoPeople, IoBarbell, IoCalendar, IoSave, IoClose, IoPencil } from 'react-icons/io5';
-import Container from '../../../../components/shared/Container';
-import Navbar from '../../../../components/Navbar';
-import ProfileNavigation from '../../components/ProfileNavigation';
 import ChangePhotoModal from './components/ChangePhotoModal';
 
 const MyProfile = () => {
